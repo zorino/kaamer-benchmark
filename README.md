@@ -2,9 +2,9 @@
 
 ## Computer specs
 
-* 32 core (2x  Intel(R) Xeon(R) CPU E5-2683)
+* 32 cores (2 x Intel E5-2683 v4 Broadwell @ 2.1GHz)
 * 120 GiB memory
-* SATA III SSD
+* SATA III connected SSD disk
 
 
 ## Software

@@ -6,6 +6,11 @@
 
 ![benchmark_plot](./results/protein_search_sensitivity.png)
 
+
+` Cell values are the ratio of hits found with kAAmer that had at least one 7-mer in common to
+report the hits`
+
+
 | Lenght                 | 40% identity   | 50% identity   | 60% identity  | 70% identity   | 80% identity   | 90% identity |
 |------------------------|----------------|----------------|---------------|----------------|----------------|--------------|
 |                    100 |          0.116 |          0.371 |         0.811 |          0.983 |              1 |            1 |

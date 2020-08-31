@@ -1,4 +1,4 @@
-## kAAmer benchmark
+## kAAmer speed benchmark
 
 ## Computer specs
 

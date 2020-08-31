@@ -4,7 +4,7 @@
 ## Results
 
 
-![benchmark_plot](./results/protein_sensitivity_benchmark.png)
+![benchmark_plot](./results/protein_search_sensitivity.png)
 
 | Lenght                 | 40% identity   | 50% identity   | 60% identity  | 70% identity   | 80% identity   | 90% identity |
 |------------------------|----------------|----------------|---------------|----------------|----------------|--------------|

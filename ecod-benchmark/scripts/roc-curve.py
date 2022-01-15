@@ -8,7 +8,7 @@
 import sys
 import plotly.graph_objects as go
 import plotly.express as px
-
+import os
 
 def usage():
     return """
@@ -73,9 +73,9 @@ def roc_curve(files):
         _soft = _fname[0]
         _fname = _fname[1].split(".")
         if len(_fname) > 2:
-            software = _soft.replace("-res", "") + "." + _fname[0]
+            software = os.path.basename(_soft) + "." + _fname[0]
         else:
-            software = _soft.replace("-res", "")
+            software = os.path.basename(_soft)
 
         _x, _y = extract_uniq_val(_file)
 
@@ -99,7 +99,7 @@ def roc_curve(files):
                       legend=dict(title="Software"),
                       font_family="Courier",
                       font_size=20)
-
+    fig.write_image("zz-sensitivity-bench.svg")
     fig.show()
 
 

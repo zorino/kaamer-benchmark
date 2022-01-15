@@ -59,6 +59,8 @@ def main(time_files):
                     results[software][split] = ms
     data = pd.DataFrame(results)
     data = data.sort_index()
+    data.to_csv("zz-time-bench.tsv", sep="\t")
+
     print(data.head(100))
 
     fig = data.plot(title="ECOD Benchmark - protein identification time",
@@ -76,7 +78,7 @@ def main(time_files):
                      showgrid=True,
                      dtick=1,
                      range=[0, 4])
-
+    fig.write_image("zz-time-bench.svg")
     fig.show()
 
 

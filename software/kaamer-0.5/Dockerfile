@@ -1,8 +1,10 @@
-FROM debian:10
+FROM golang:1.15.8-buster
 
 # FIXUID
 RUN apt-get update \
     && apt-get install -y curl \
+    && curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh >> /usr/local/bin/wait-for-it.sh \
+    && chmod +x /usr/local/bin/wait-for-it.sh \
     && addgroup --gid 1000 docker \
     && adduser --uid 1000 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker
 
@@ -14,21 +16,17 @@ RUN USER=docker && \
     mkdir -p /etc/fixuid && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
 
-ADD ghostz-1.0.2.tar.gz /opt/
+ADD kaamer-v0.5.tar.gz /opt/
 
-RUN apt-get update; \
-    apt-get install -y build-essential
-
-RUN cd /opt/ghostz-1.0.2/; \
-    make; \
-    cp ghostz /usr/local/bin/; \
-    chmod +x /usr/local/bin/*
+RUN cd /opt/kaamer-0.5 \
+    && go install ./...
 
 RUN mkdir /data \
     && chown docker:docker /data
-
 VOLUME /data
 WORKDIR /data
+
+EXPOSE 8321
 
 USER docker:docker
 ENTRYPOINT ["fixuid"]

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package kvstore;
+
+message Protein {
+
+	string EntryId = 1;
+	string Sequence = 2;
+	int32 Length = 3;
+
+    map<string, string> Features = 4;
+
+}

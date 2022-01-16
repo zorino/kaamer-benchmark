@@ -1,14 +1,10 @@
 # kAAmer benchmarks
 
+
 ## speed benchmark
 
 
 ![benchmark_speed_plot](./ecod-benchmark/results/zz-time-bench.svg)
-
-
-` Cell values are the ratio of hits found with kAAmer that had at least one 7-mer in common to
-report the hits`
-
 
 
 | Nb of query | diamond-0.9.25.fast | diamond-0.9.25.moresensitive | ghostz-1.0.2 | kaamer-0.6.k1-align | kaamer-0.6.k1-noalign | kaamer-0.6.k10-align | kaamer-0.6.k10-noalign | ncbi-blast-2.9.0 |

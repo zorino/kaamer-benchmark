@@ -1,8 +1,88 @@
-# kAAmer benchmarks
+# ECOD benchmark
+
+## Requirement
+
+* Docker
+
+## Software tested
+
+* diamond v0.9.25 (fast mode)
+* diamond v0.9.25 (more sensitive mode)
+* ghostz v1.0.2 (default mode)
+* ncbi-blast v2.9.0 (default mode)
+* kaamer v0.6 k1 (alignment mode - with at least 1 kmer match)
+* kaamer v0.6 k1 (kmer match mode - with at least 1 kmer match)
+* kaamer v0.6 k10 (alignment mode - with at least 10 kmer matches)
+* kaamer v0.6 k10 (kmer match mode - with at least 10 kmer matches)
+
+## Running the ECOD benchmark
+
+* Clone this repo
+``` shellsession
+git clone git@github.com:zorino/kaamer-benchmark.git
+cd kaamer-benchmark/ecod-benchmark
+```
+
+* Build the docker images for each software
+``` shell
+for i in \
+    diamond-0.9.25-res.h_name.fast.sh \
+    ghostz-1.0.2-res.h_name.sh \
+    kaamer-0.6.0-res.h_name.align.sh \
+    ncbi-blast-2.9.0-res.h_name.sh
+do
+    bash $i build
+done
+```
+
+* Build the database for each software
+``` shell
+for i in \
+    diamond-0.9.25-res.h_name.fast.sh \
+    ghostz-1.0.2-res.h_name.sh \
+    kaamer-0.6.0-res.h_name.align.sh \
+    ncbi-blast-2.9.0-res.h_name.sh
+do
+    bash $i makedb
+done
+```
+
+* Run the sensitivity benchmark (all against all)
+``` shell
+for i in \
+    diamond-0.9.25-res.h_name.fast.sh \
+    ghostz-1.0.2-res.h_name.sh \
+    kaamer-0.6.0-res.h_name.align.sh \
+    ncbi-blast-2.9.0-res.h_name.sh
+do
+    bash $i align
+done
+```
+
+* Run the speed benchmark (by split 10-50000 queries)
+``` shell
+for i in \
+    diamond-0.9.25-res.h_name.fast.sh \
+    ghostz-1.0.2-res.h_name.sh \
+    kaamer-0.6.0-res.h_name.align.sh \
+    ncbi-blast-2.9.0-res.h_name.sh
+do
+    bash $i bench
+done
+```
 
 
-## speed benchmark
+## Results
 
+The following results were obtain on a Amazon EC2 c5ad.8xlarge instance using the NVMe disk with the following claimed specifications :
+  * 32 vCPU
+  * 64G RAM
+  * 260,526 random read IOPS
+  * 113,684 write IOPS
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/compute-optimized-instances.html
+
+### Speed benchmark
 
 ![benchmark_speed_plot](./ecod-benchmark/results/zz-time-bench.svg)
 
@@ -24,7 +104,6 @@
 | 50000       | 64.729              | 287.696                      | 222.447      | 966.625             | 78.765                | 390.75               | 46.539                 | 4446.812         |
 
 
-
-## sensitivity benchmark
+### Sensitivity benchmark
 
 ![benchmark_sensitivity_plot](./ecod-benchmark/results/zz-sensitivity-bench.svg)

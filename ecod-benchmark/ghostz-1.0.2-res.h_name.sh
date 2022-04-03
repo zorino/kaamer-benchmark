@@ -1,5 +1,11 @@
 #!/bin/bash
 
+build() {
+    path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+    cd "$path/../software/ghostz-1.0.2"
+    docker build . --tag ghostz:1.0.2
+}
+
 makedb() {
     docker run -v $(pwd):/data -u 1000:1000 ghostz:1.0.2 ghostz db  -i sequences/h_name.fasta -o sequences/h_name.fasta.ghostz
 }
@@ -27,6 +33,7 @@ then
     echo ""
     echo "Commands: "
     echo ""
+    echo "  build     -   will build the docker image of the software"
     echo "  makedb    -   will make the database"
     echo "  align     -   will run the all against all alignments of scop database"
     echo "  bench     -   will run the speed benchmark"

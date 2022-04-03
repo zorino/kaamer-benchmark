@@ -1,5 +1,11 @@
 #!/bin/bash
 
+build() {
+    path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+    cd "$path/../software/ncbi-blast-2.9.0+"
+    docker build . --tag ncbi-blast:2.9.0
+}
+
 makedb() {
     docker run --rm -u 1000:1000 -v $(pwd):/data  ncbi-blast:2.9.0 makeblastdb -dbtype prot -in sequences/h_name.fasta -out sequences/h_name.fasta.blast
 }
@@ -27,6 +33,7 @@ then
     echo ""
     echo "Commands: "
     echo ""
+    echo "  build     -   will build the docker image of the software"
     echo "  makedb    -   will make the database"
     echo "  align     -   will run the all against all alignments of scop database"
     echo "  bench     -   will run the speed benchmark"

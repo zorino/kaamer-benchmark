@@ -1,5 +1,11 @@
 #!/bin/bash
 
+build() {
+    path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+    cd "$path/../software/diamond-0.9.25"
+    docker build . --tag diamond:0.9.25
+}
+
 makedb() {
     docker run -v $(pwd):/data -u 1000:1000 diamond:0.9.25 diamond makedb --in sequences/h_name.fasta --db sequences/h_name.fasta
 }
@@ -27,6 +33,7 @@ then
     echo ""
     echo "Commands: "
     echo ""
+    echo "  build     -   will build the docker image of the software"
     echo "  makedb    -   will make the database"
     echo "  align     -   will run the all against all alignments of scop database"
     echo "  bench     -   will run the speed benchmark"

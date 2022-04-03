@@ -1,5 +1,11 @@
 #!/bin/bash
 
+build() {
+    path="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+    cd "$path/../software/kaamer-0.6.0"
+    docker build . --tag kaamer:0.6.0
+}
+
 makedb() {
     docker run --rm -u 1000:1000 -v $(pwd):/data  kaamer:0.6.0 kaamer-db -make -f fasta -i sequences/h_name.fasta -d sequences/h_name.fasta.kaamer-0.6
 }
@@ -37,6 +43,7 @@ then
     echo ""
     echo "Commands: "
     echo ""
+    echo "  build     -   will build the docker image of the software"
     echo "  makedb    -   will make the database"
     echo "  align     -   will run the all against all alignments of scop database"
     echo "  bench     -   will run the speed benchmark"

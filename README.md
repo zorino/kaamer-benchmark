@@ -18,7 +18,7 @@
 ## Running the ECOD benchmark
 
 * Clone this repo
-``` shellsession
+``` shell
 git clone git@github.com:zorino/kaamer-benchmark.git
 cd kaamer-benchmark/ecod-benchmark
 ```
@@ -80,7 +80,6 @@ do
     bash $i bench
 done
 ```
-
 
 ## Results
 

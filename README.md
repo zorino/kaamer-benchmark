@@ -51,9 +51,14 @@ done
 ``` shell
 for i in \
     diamond-0.9.25-res.h_name.fast.sh \
+    diamond-0.9.25-res.h_name.moresensitive.sh \
     ghostz-1.0.2-res.h_name.sh \
+    ncbi-blast-2.9.0-res.h_name.sh \
     kaamer-0.6.0-res.h_name.align.sh \
-    ncbi-blast-2.9.0-res.h_name.sh
+    kaamer-0.6.0-res.h_name.k10-align.sh \
+    kaamer-0.6.0-res.h_name.k10-noalign.sh \
+    kaamer-0.6.0-res.h_name.noalign-fast.sh \
+    kaamer-0.6.0-res.h_name.noalign.sh
 do
     bash $i align
 done
@@ -63,9 +68,14 @@ done
 ``` shell
 for i in \
     diamond-0.9.25-res.h_name.fast.sh \
+    diamond-0.9.25-res.h_name.moresensitive.sh \
     ghostz-1.0.2-res.h_name.sh \
+    ncbi-blast-2.9.0-res.h_name.sh \
     kaamer-0.6.0-res.h_name.align.sh \
-    ncbi-blast-2.9.0-res.h_name.sh
+    kaamer-0.6.0-res.h_name.k10-align.sh \
+    kaamer-0.6.0-res.h_name.k10-noalign.sh \
+    kaamer-0.6.0-res.h_name.noalign-fast.sh \
+    kaamer-0.6.0-res.h_name.noalign.sh
 do
     bash $i bench
 done

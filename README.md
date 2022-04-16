@@ -6,14 +6,22 @@
 
 ## Software tested
 
-* diamond v0.9.25 (fast mode)
+* diamond v0.9.25 (fast mode - default)
+  * `diamond blastp -e 0.01 -k 150000`
 * diamond v0.9.25 (more sensitive mode)
+  * `diamond blastp -e 0.01 -k 150000 --more-sensitive`
 * ghostz v1.0.2 (default mode)
+  * `ghostz aln -b 150000`
 * ncbi-blast v2.9.0 (default mode)
+  * `blastp -evalue 0.01 -max_target_seqs 150000`
 * kaamer v0.6 k1 (alignment mode - with at least 1 kmer match)
+  * `kaamer -mink 1 -minr 0.001 -m 150000 -align`
 * kaamer v0.6 k1 (kmer match mode - with at least 1 kmer match)
+  * `kaamer -mink 1 -minr 0.001 -m 150000`
 * kaamer v0.6 k10 (alignment mode - with at least 10 kmer matches)
+  * `kaamer -mink 10 -minr 0.001 -m 150000 -align`
 * kaamer v0.6 k10 (kmer match mode - with at least 10 kmer matches)
+  * `kaamer -mink 10 -minr 0.001 -m 150000`
 
 ## Running the ECOD benchmark
 
